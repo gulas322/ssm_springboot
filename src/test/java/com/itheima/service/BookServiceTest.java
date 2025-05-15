@@ -1,5 +1,6 @@
 package com.itheima.service;
 
+import com.itheima.dao.BookDao;
 import com.itheima.domain.Book;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,18 +12,18 @@ public class BookServiceTest {
     @Autowired
 //    private BookServiceImpl bookService; Spring会查所有实现了接口的类，
 //    这里只有一个，所以可以这样写
-    private BookService bookService;
+    private BookDao bookDao;
 
 
     @Test
     public void testQueryBookById(){
-        Book book = bookService.queryBookById(3);
+        Book book = bookDao.queryBookById(3);
         System.out.println(book);
     }
 
     @Test
     public void testQueryBookAll(){
-        bookService.queryBookAll().forEach(System.out::println);
+        bookDao.queryBookAll().forEach(System.out::println);
     }
 
     @Test
@@ -31,7 +32,7 @@ public class BookServiceTest {
         book.setType("测试");
         book.setName("测试");
         book.setDescription("测试");
-        bookService.addBook(book);
+        bookDao.addBook(book);
         System.out.println("添加成功");
     }
 
@@ -42,13 +43,13 @@ public class BookServiceTest {
         book.setType("测试");
         book.setName("测试");
         book.setDescription("测试");
-        bookService.updateBook(book);
+        bookDao.updateBook(book);
         System.out.println(book);
     }
 
     @Test
     public void testDeleteBookById(){
-        bookService.deleteBookById(5);
+        bookDao.deleteBookById(5);
         System.out.println("删除成功");
     }
 }
