@@ -5,3 +5,8 @@ spring:
     url: jdbc:mysql://localhost:3306/ssm_db
     username: root
     password: 123456789
+
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: com.itheima.domain
+# 这里springboot 需要单独在这里配一下mapper

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    namespace:名称空间
+-->
+
+<mapper namespace="com.itheima.dao.BookDao">
+
+    <resultMap id="bookResultMap" type="com.itheima.domain.Book">
+        <id property="id" column="id"/>
+        <result column="type" property="type"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+    </resultMap>
+
+
+    <select id="queryBookAll" resultMap="bookResultMap">
+        select * from tbl_book
+    </select>
+
+
+
+    <select id="queryBookById" parameterType="integer" resultMap="bookResultMap">
+        select * from tbl_book where id = #{id}
+    </select>
+
+
+    <insert id="addBook">
+        insert into tbl_book
+        values (null, #{type}, #{name}, #{description})
+    </insert>
+
+
+    <update id="updateBook">
+        update tbl_book set type = #{type}, name = #{name}, description = #{description} where id = #{id}
+    </update>
+
+
+
+    <delete id="deleteBookById">
+        delete from tbl_book where id = #{id}
+    </delete>
+
+
+
+</mapper>
